@@ -163,9 +163,9 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/product/{id<\d+>}/delete",
+     * @Route("/product/{id<\d+>}",
      *     name="product_delete",
-     *     methods={"POST"})
+     *     methods={"DELETE"})
      *
      * @param Request      $request
      * @param Product|null $product
@@ -181,13 +181,13 @@ class ProductController extends AbstractController
             throw $this->createNotFoundException('La page que vous recherchez n\'existe pas');
         }
 
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete', $request->request->get('_token'))) {
             $manager = $this->getDoctrine()->getManager();
             $manager->remove($product);
             $manager->flush();
 
             $this->addFlash(
-                'sucess',
+                'success',
                 'Suppression effectuée'
             );
         } else {

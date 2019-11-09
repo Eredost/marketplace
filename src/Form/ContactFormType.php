@@ -51,7 +51,6 @@ class ContactFormType extends AbstractType
     {
         $message = $event->getData();
 
-        // TODO: Create an email template and integrate it with the method
         $this->mailer->sendEmail(
             'staff@cocorico.world',
             'Un nouveau message',

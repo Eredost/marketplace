@@ -19,7 +19,7 @@ class ProductFixture extends BaseFixture implements DependentFixtureInterface
                     ->setPrice($this->faker->randomFloat(2, 1, 40))
                     ->setWeight($this->faker->randomFloat(3, 1, 5))
                     ->setQuantity($this->faker->numberBetween(0, 50))
-                    ->setImage('https://loremflickr.com/200/200/nutriment?lock=' . $this->faker->numberBetween(0, 100))
+                    ->setImage('product-placeholder.jpg')
                     ->addSubcategory($subcategory)
                     ->setProducer($this->getRandomReference('main_producer'))
                 ;

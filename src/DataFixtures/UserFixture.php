@@ -73,7 +73,7 @@ class UserFixture extends BaseFixture implements DependentFixtureInterface
                 ->setFirstname($this->faker->firstName)
                 ->setLastname($this->faker->lastName)
                 ->setTelephone($this->faker->phoneNumber)
-                ->setAvatar('https://i.pravatar.cc/200?u='.$this->faker->numberBetween(0, 100))
+                ->setAvatar($this->faker->unique()->producerAvatar())
                 ->setDescription($this->faker->sentence(10, true))
                 ->setUser($this->faker->unique()->randomElement($users))
             ;

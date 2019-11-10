@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\DataFixtures\Provider\ProducerProvider;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
@@ -29,6 +30,7 @@ abstract class BaseFixture extends Fixture
     {
         $this->manager = $manager;
         $this->faker   = Factory::create('fr_FR');
+        $this->faker->addProvider(new ProducerProvider($this->faker));
 
         $this->loadData($manager);
     }

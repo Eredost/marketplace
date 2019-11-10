@@ -16,7 +16,9 @@ class AdminController extends AbstractController
 {
 
     /**
-     * @Route("", name="home")
+     * @Route("",
+     *     name="home",
+     *     methods={"GET"})
      */
     public function index()
     {

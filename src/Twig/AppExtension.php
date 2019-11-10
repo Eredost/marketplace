@@ -20,7 +20,7 @@ class AppExtension extends AbstractExtension
             // parameter: ['is_safe' => ['html']]
             // Reference: https://twig.symfony.com/doc/2.x/advanced.html#automatic-escaping
             new TwigFilter('truncate', [$this, 'truncate']),
-            new TwigFilter('json_array_decode', [$this, 'json_array_decode']),
+            new TwigFilter('json_array_decode', [$this, 'jsonArrayDecode']),
         ];
     }
 
@@ -66,7 +66,7 @@ class AppExtension extends AbstractExtension
      *
      * @return string|null
      */
-    public function json_array_decode(array $json): ?string
+    public function jsonArrayDecode(array $json): ?string
     {
         return implode(" ", $json);
     }

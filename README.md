@@ -1,6 +1,6 @@
 # Welcome on Cocorico World !
 
-[![SymfonyInsight](https://insight.symfony.com/projects/8648c955-2435-4dc5-be84-b6f8464fff50/mini.svg)](https://insight.symfony.com/projects/8648c955-2435-4dc5-be84-b6f8464fff50)
+[![SymfonyInsight](https://insight.symfony.com/projects/8648c955-2435-4dc5-be84-b6f8464fff50/big.svg)](https://insight.symfony.com/projects/8648c955-2435-4dc5-be84-b6f8464fff50)
 
 Cocorico World company wants to be an actor of the development of the local commerce on the French market, from producer to consumer, to contribute to the development of the French economy.
 

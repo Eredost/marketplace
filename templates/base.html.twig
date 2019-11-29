@@ -23,7 +23,7 @@
 
         <title>{% block title %}{% endblock %} - Cocorico </title>
     </head>
-    <body>
+    <body class="body">
        
         </div>
         
@@ -36,8 +36,12 @@
                     </div>
                 {% endfor %}
             {% endfor %}
-        {% block body %}{% endblock %}
-        {% block footer %} {% include 'layout/_footer.html.twig' %} {% endblock %}
+
+         <div class="body__content">
+            {% block body %}{% endblock %}
+         </div>
+
+         {% block footer %} {% include 'layout/_footer.html.twig' %} {% endblock %}
         
         {% block javascripts %}
             <script src="{{ asset('asset/js/jquery.min.js') }}" ></script>

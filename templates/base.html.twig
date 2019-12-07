@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Required meta tags -->
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
@@ -12,36 +12,36 @@
         <meta name="msapplication-TileColor" content="#00a300">
         <meta name="theme-color" content="#ffffff">
 
-
-
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
             <link rel="stylesheet" href="{{ asset('asset/css/font-awesome.min.css') }}">
-            
         {% endblock %}
 
         <title>{% block title %}{% endblock %} - Cocorico </title>
     </head>
     <body class="body">
-       
-        </div>
         
         {% block header%}{% include 'layout/_header.html.twig' %} {% endblock %}
-        <div>
-                {% for label, messages in app.flashes %}
+
+        <div class="body__content container">
+
+            {% for label, messages in app.flashes %}
                 {% for message in messages %}
-                    <div class="alert alert-{{ label }} flash">
+                    <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
                         {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 {% endfor %}
             {% endfor %}
 
-         <div class="body__content">
             {% block body %}{% endblock %}
-         </div>
 
-         {% block footer %} {% include 'layout/_footer.html.twig' %} {% endblock %}
+        </div>
+
+        {% block footer %} {% include 'layout/_footer.html.twig' %} {% endblock %}
         
         {% block javascripts %}
             <script src="{{ asset('asset/js/jquery.min.js') }}" ></script>

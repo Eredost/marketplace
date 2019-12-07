@@ -39,11 +39,6 @@
     </div>
 </div>
 
-{% for message in app.flashes('email sent') %}
-    <div class="flash-notice alert alert-success"></div>
-    {{ message }}
-{% endfor %}
-
 <div class="container d-flex flex-wrap w-100">
 
     {% for producer in producers %}

@@ -23,7 +23,7 @@ $('.owl-carousel').owlCarousel({
         },
 
         1366: {
-            items: 6
+            items: 5
         }
     }
 })

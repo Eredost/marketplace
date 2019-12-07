@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Frontend;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -10,7 +11,6 @@ use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ProductType;
 use Symfony\Component\HttpFoundation\Response;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ProductController extends AbstractController
@@ -130,14 +130,13 @@ class ProductController extends AbstractController
      *     name = "disable_product",
      *     methods={"GET", "POST"})
      *
-     * @param ObjectManager $manager
-     * @param Product|null  $product
+     * @param EntityManagerInterface $manager
+     * @param Product|null $product
      *
      * @return RedirectResponse
      *
-     * @throws NotFoundHttpException when the desired product does not exist
      */
-    public function toggleProduct(ObjectManager $manager, Product $product = null)
+    public function toggleProduct(EntityManagerInterface $manager, Product $product = null)
     {
         if (!$product) {
 

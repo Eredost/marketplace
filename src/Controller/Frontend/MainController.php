@@ -36,18 +36,6 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/a-propos",
-     *     name="company_page",
-     *     methods={"GET"})
-     *
-     * @return Response
-     */
-    public function showCompanyPresentation()
-    {
-        return $this->render("frontend/main/company.html.twig");
-    }
-
-    /**
      * @Route("/faq",
      *     name="faq_page",
      *     methods={"GET"})

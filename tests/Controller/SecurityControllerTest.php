@@ -18,7 +18,7 @@ class SecurityControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
         $client->followRedirects();
 
-        $link = $crawler->filter('a[title="Login"]')->link();
+        $link = $crawler->filter('a[href="/login"]')->link();
         $crawler = $client->click($link);
 
         $crawler = $client->submitForm('Connexion', [
@@ -33,16 +33,17 @@ class SecurityControllerTest extends WebTestCase
             ->link()
         ;
         $crawler = $client->click($link);
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
-        $crawler = $client->request('GET', $client->getRequest()->getUri().'/profil');
-        $this->assertEquals('403', $client->getResponse()->getStatusCode());
+        $crawler = $client->request('GET', '/producer/profil');
+        $this->assertEquals(403, $client->getResponse()->getStatusCode());
 
         $crawler = $client->request('GET', '/admin');
-        $this->assertEquals('403', $client->getResponse()->getStatusCode());
+        $this->assertEquals(403, $client->getResponse()->getStatusCode());
     }
 
     /**
-     * Method to test the application with an administrator with the ROLE_ADMIN.
+     * Method to test the application with an user with the ROLE_ADMIN.
      * The administrator is moved to the admin interface, creates a new subcategory,
      * uses the search bar, and deletes the previously created item
      */
@@ -52,7 +53,7 @@ class SecurityControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
         $client->followRedirects();
 
-        $link = $crawler->filter('a[title="Login"]')->link();
+        $link = $crawler->filter('a[href="/login"]')->link();
         $crawler = $client->click($link);
 
         $crawler = $client->submitForm('Connexion', [
@@ -61,7 +62,7 @@ class SecurityControllerTest extends WebTestCase
         ]);
 
         $this->assertEquals('/', $client->getRequest()->getPathInfo());
-        $link = $crawler->filter('a[title="Admin"]')->link();
+        $link = $crawler->filter('a[href="/admin"]')->link();
         $crawler = $client->click($link);
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
@@ -72,7 +73,7 @@ class SecurityControllerTest extends WebTestCase
         $form['add_subcategory[name]'] = 'John Doe was here';
 
         $crawler = $client->submit($form);
-        $this->assertSelectorTextContains('div.flash', 'La sous-catégorie a été créée avec succès !');
+        $this->assertSelectorTextContains('div.alert-dismissible', 'La sous-catégorie a été créée avec succès !');
 
         $form = $crawler->filter('button#search_submit')->eq(0)->form();
         $form['q'] = 'John Doe was here';

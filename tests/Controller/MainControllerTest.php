@@ -22,6 +22,10 @@ class MainControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
+    /**
+     * Test to verify the proper functioning of the contact form and associated
+     * redirects
+     */
     public function testContactForm()
     {
         $client = static::createClient();
@@ -50,19 +54,12 @@ class MainControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isRedirect());
         $crawler = $client->followRedirect();
 
-        $homeLink = $crawler->filter('a[title="Homepage"]')->link();
+        $homeLink = $crawler->filter('a.navbar-brand')->link();
         $crawler = $client->click($homeLink);
 
-        $shopLink = $crawler
-            ->filter('a:contains("Boutique du producteur")')
-            ->eq(0)
-            ->link()
-        ;
-        $client->click($shopLink);
+        $crawler = $client->request('GET', '/profil');
 
-        $crawler = $client->request('GET', $client->getRequest()->getUri().'/profil');
-
-        $this->assertTrue($client->getResponse()->isRedirect());
+        $this->assertEquals(401, $client->getResponse()->getStatusCode());
     }
 
     /**
@@ -74,13 +71,10 @@ class MainControllerTest extends WebTestCase
     {
         return [
             ['/'],
-            ['/a-propos'],
             ['/faq'],
             ['/cgv'],
             ['/mentions-legales'],
             ['/contact'],
         ];
     }
-
-
 }

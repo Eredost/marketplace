@@ -1,85 +1,72 @@
 {% extends 'base.html.twig' %}
 
- {% block stylesheets %}
- {{ parent() }}
-<link rel="stylesheet" href="{{ asset('asset/css/owl.carousel.css') }}">
-<link rel="stylesheet" href="{{ asset('asset/css/owl.theme.default.min.css') }}">
- {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('asset/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/owl.theme.default.min.css') }}">
+{% endblock %}
 
-{% block title %}Cocorico World Home {% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
 
-<div class="container mt-3">
-    <div class="row">
+    <section class="mt-3">
 
-        <h1> Bienvenue chez Cocorico World</h1>
+        <h2 class="text-center mb-4">Découvrir les producteurs</h2>
 
-        <div class="owl-carousel owl-theme">
-            {% for product in last_products %}
-                <div class="item">
-                    <div class="card">
-                        {% if product.image matches '#^https://#' %}
-                        <a href="{{ path('product_show', {'id' : product.id})}}"><img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}"></a>
-                        {% else %}
-                            <a href="{{ path('product_show', {'id' : product.id})}}"><img src="{{ asset('uploads/avatar/' ~ product.image) | imagine_filter('carousel') }}" class="card-img-top" alt="{{ product.name }}"></a>
-                        {% endif %}
-                        <div class="card-body carousel-card-body">
-                            <div>
-                                <h5  class="text-center">{{ product.name}}</h5>
-                            </div>
-                            <div>
-                                <h6 class="text-center"><span>{{product.price}}€</span></h6>
-                            </div>
-                        </div>
+        <div class="d-flex flex-wrap justify-content-around">
+
+            {% for producer in producers %}
+
+                <div class="card p-0 col-sm-12 col-md-5 col-lg-3 mx-2 mx-lg-1 mb-5">
+
+                    <!--Card image-->
+                    <a href="{{ path('producer_show', {'id': producer.id}) }}" class="d-block">
+
+                        <img class="card-img-top" src="{{ asset('uploads/avatar/' ~ producer.avatar)|imagine_filter('avatar2_thumbnails') }}" alt="Card image cap">
+
+                    </a>
+                    <!--Card image-->
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <a href="{{ path('producer_show', {'id': producer.id}) }}">
+                            <h4 class="card-title">{{ producer.firstname ~ ' ' ~ producer.lastname }}</h4>
+                        </a>
+                        <p>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-full"></i>
+                        </p>
+
+
+                        <!--Text-->
+                        <p class="card-tex*">{{ producer.description|truncate(40, '...') }}</p>
+                        <hr>
+                        <a><span>{{ producer.nbProducts }} produit{% if producer.nbProducts > 1 %}s{% endif %}</span></a>
+                        <p class="float-right">Inscrit en {{ producer.createdAt|date('Y') }}</p>
                     </div>
+                    <!--Card content-->
+
                 </div>
             {% endfor %}
+
         </div>
-    </div>
-</div>
 
-<div class="container d-flex flex-wrap w-100">
+    </section>
 
-    {% for producer in producers %}
-    {% set url = path('producer_show', {'id': producer.id}) %}
+    <section class="mb-5 mt-2">
 
-        <div class="card col-xs-10 col-sm-6 col-md-4 col-lg-3 overflow-hidden " >
-            <div class="card-img-responsive mx-auto my-auto text-center ">
-           {% if producer.avatar matches '#^https://#' %}
-                <a href="{{ url }}"><img src="{{ producer.avatar }}" alt="{{ producer.firstname }}"></a>
-            {% else %}
-                <a href="{{ url }}"><img src="{{ asset('uploads/avatar/' ~ producer.avatar) | imagine_filter("product_thumbnails") }}" alt="{{ producer.firstname }}"></a>
-            {% endif %}
-            </div>
-            <div  class="card-body label-producer-homepage">
-                <a href="{{ url }}">
-                <h5 class="card-title">{{ producer.socialReason }}</h5>
-                    <p>{{ producer.city }}</p>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <p class="card-text"> </p>
+        <h2 class="text-center mb-4">Les derniers produits</h2>
 
-                   </a>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item description-producer-homepage">
-                    <p class="card-text">
-                        <h5>Description</h5>
-                        {{ producer.description }}
-                    </p>
-                </li>
+        {{ include('layout/_carousel.html.twig', {
+            products: last_products,
+        }) }}
+    </section>
 
-            </ul>
-            <div class="card-body text-center">
-                <a class="btn btn-info prod-button" href="{{ url }}">Boutique du producteur</a>
-            </div>
-        </div>
-    {% endfor %}
-</div>
 {% endblock %}
 
 {% block javascripts %}

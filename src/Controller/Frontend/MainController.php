@@ -26,8 +26,12 @@ class MainController extends AbstractController
      */
     public function index(Request $request, ProducerRepository $producerRepository, ProductRepository $productRepository )
     {
-        $producers = $producerRepository->findAll();
+        $producers = $producerRepository->findBy([], [], '9');
         $lastProducts = $productRepository->lastRelease();
+
+        foreach ($producers as $producer) {
+            $producer->nbProducts = $productRepository->getProductsCount($producer)[1];
+        }
        
         return $this->render('frontend/main/index.html.twig', [
             'producers'     => $producers,

@@ -28,6 +28,17 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    public function getProductsCount($producer)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p.id)')
+            ->andWhere('p.producer = :producer')
+            ->setParameter('producer', $producer)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     public function getAllWithSearchQueryBuilder($term)
     {
         $qb = $this->createQueryBuilder('p')

@@ -1,0 +1,28 @@
+<div class="owl-carousel owl-theme">
+
+    {% for product in products %}
+
+        <div class="item">
+
+            <div class="card">
+
+                <a href="{{ path('product_show', {'id' : product.id})}}"><img src="{{ asset('uploads/avatar/' ~ product.image) | imagine_filter('carousel') }}" class="card-img-top" alt="{{ product.name }}"></a>
+
+                <div class="card-body carousel-card-body">
+
+                    <div>
+
+                        <h5  class="text-center">{{ product.name}}</h5>
+
+                    </div>
+
+                    <div>
+
+                        <h6 class="text-center"><span>{{product.price}}€</span></h6>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

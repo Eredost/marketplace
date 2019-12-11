@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Product;
+use App\Entity\Subcategory;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -10,12 +11,13 @@ class ProductFixture extends BaseFixture implements DependentFixtureInterface
 {
     protected function loadData(ObjectManager $manager)
     {
+        /** @var Subcategory[] $subcategories */
         $subcategories = $this->getReferences('main_subcategory');
 
         foreach ($subcategories as $key => $subcategory) {
             $this->createMany(4, 'main_product_'.$key, function($count) use ($subcategory) {
                 $product = new Product();
-                $product->setName($this->faker->sentence(2, true))
+                $product->setName($subcategory->getName())
                     ->setPrice($this->faker->randomFloat(2, 1, 40))
                     ->setWeight($this->faker->randomFloat(3, 1, 5))
                     ->setQuantity($this->faker->numberBetween(0, 50))

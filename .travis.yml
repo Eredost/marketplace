@@ -30,11 +30,10 @@ install:
   - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
   - ./vendor/bin/simple-phpunit install
   - composer require sensiolabs/security-checker
-  - echo "DATABASE_URL=mysql://root:@127.0.0.1:3306/cocorico" >> .env.test.local
-  - composer install
-  - php bin/console doctrine:database:create
-  - php bin/console doctrine:migrations:migrate
-  - php bin/console doctrine:fixtures:load
+  - echo "DATABASE_URL=mysql://root:@127.0.0.1:3306/cocorico" | tee .env.test.local .env.local
+  - ./bin/console doctrine:database:create
+  - ./bin/console doctrine:migrations:migrate --no-interaction
+  - ./bin/console doctrine:fixtures:load --no-interaction
 
 script:
   - composer validate --strict --no-check-lock

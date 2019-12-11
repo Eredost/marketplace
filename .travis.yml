@@ -1,5 +1,9 @@
 language: php
 sudo: false
+
+services:
+  - mysql
+
 cache:
   directories:
     - $HOME/.composer/cache/files
@@ -13,7 +17,6 @@ env:
 matrix:
   fast_finish: true
   include:
-
     # Test the latest stable release
     - php: 7.3
       env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
@@ -27,6 +30,11 @@ install:
   - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
   - ./vendor/bin/simple-phpunit install
   - composer require sensiolabs/security-checker
+  - echo "DATABASE_URL=mysql://root:@127.0.0.1:3306/cocorico" >> .env.test.local
+  - composer install
+  - php bin/console doctrine:database:create
+  - php bin/console doctrine:migrations:migrate
+  - php bin/console doctrine:fixtures:load
 
 script:
   - composer validate --strict --no-check-lock

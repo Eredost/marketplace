@@ -28,7 +28,7 @@ class SecurityControllerTest extends WebTestCase
 
         $this->assertEquals('/', $client->getRequest()->getPathInfo());
         $link = $crawler
-            ->filter('a:contains("Boutique du producteur")')
+            ->filter('a[href^="/producer/"]')
             ->eq(0)
             ->link()
         ;

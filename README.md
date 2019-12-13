@@ -19,7 +19,11 @@ Customers will be able to order products from any producer in France with a very
     - MySQL
     - Symfony 4
     
-![Logic model of the data](docs/MLD-V1.svg)
+### Additional documentation
+
+- [Data dictionary](docs/DD.md)
+
+- [Conceptual data model](docs/MCD.md)
 
 ## Installation
 

@@ -1,0 +1,200 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="579" height="630" view_box="0 0 579 630"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Fri, 13 Dec 2019 07:27:27</desc>
+
+<rect id="frame" x="0" y="0" width="579" height="630" fill="#ffffbf" stroke="none" stroke-width="0"/>
+
+<!-- Association CAN REGISTER AS -->
+<line x1="226" y1="333" x2="226" y2="144" stroke="#f46d43" stroke-width="1.5"/>
+<text x="232.0" y="216" fill="#4575b4" font-family="Arial" font-size="12">0,1</text>
+<path d="M 226.0 172.0 L 232.0 184.0 L 226.0 180.0 L 220.0 184.0 Z" fill="#f46d43" stroke-width="0"/>
+<line x1="65" y1="144" x2="226" y2="144" stroke="#f46d43" stroke-width="1.5"/>
+<text x="123" y="161.0" fill="#4575b4" font-family="Arial" font-size="12">1,1</text>
+<path d="M 117.0 144.0 L 129.0 138.0 L 125.0 144.0 L 129.0 150.0 Z" fill="#f46d43" stroke-width="0"/>
+<g id="association-CAN REGISTER AS">
+	<path d="M 288 116 a 14 14 90 0 1 14 14 V 143 h -152 V 130 a 14 14 90 0 1 14 -14" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+	<path d="M 302 143.0 v 15 a 14 14 90 0 1 -14 14 H 164 a 14 14 90 0 1 -14 -14 V 143.0 H 152" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+	<rect x="150" y="116" width="152" height="56" fill="none" rx="14" stroke="#f46d43" stroke-width="3"/>
+	<line x1="150" y1="143" x2="302" y2="143" stroke="#f46d43" stroke-width="1.5"/>
+	<text x="159" y="136.3" fill="#000000" font-family="Arial Black" font-size="13">CAN REGISTER AS</text>
+</g>
+
+<!-- Association SELL -->
+<line x1="65" y1="144" x2="65" y2="333" stroke="#f46d43" stroke-width="1.5"/>
+<text x="71.0" y="296" fill="#4575b4" font-family="Arial" font-size="12">0,N</text>
+<path d="M 65.0 305.0 L 59.0 293.0 L 65.0 297.0 L 71.0 293.0 Z" fill="#f46d43" stroke-width="0"/>
+<line x1="65" y1="504" x2="65" y2="333" stroke="#f46d43" stroke-width="1.5"/>
+<text x="71.0" y="378" fill="#4575b4" font-family="Arial" font-size="12">1,1</text>
+<path d="M 65.0 387.0 L 59.0 375.0 L 65.0 379.0 L 71.0 375.0 Z" fill="#f46d43" stroke-width="0"/>
+<g id="association-SELL">
+	<path d="M 79 305 a 14 14 90 0 1 14 14 V 332 h -56 V 319 a 14 14 90 0 1 14 -14" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+	<path d="M 93 332.0 v 15 a 14 14 90 0 1 -14 14 H 51 a 14 14 90 0 1 -14 -14 V 332.0 H 56" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+	<rect x="37" y="305" width="56" height="56" fill="none" rx="14" stroke="#f46d43" stroke-width="3"/>
+	<line x1="37" y1="332" x2="93" y2="332" stroke="#f46d43" stroke-width="1.5"/>
+	<text x="46" y="325.3" fill="#000000" font-family="Arial Black" font-size="13">SELL</text>
+</g>
+
+<!-- Association IS CHILD OF -->
+<line x1="514" y1="333" x2="371" y2="333" stroke="#f46d43" stroke-width="1.5"/>
+<text x="449" y="350.0" fill="#4575b4" font-family="Arial" font-size="12">1,1</text>
+<path d="M 424.0 333.0 L 436.0 327.0 L 432.0 333.0 L 436.0 339.0 Z" fill="#f46d43" stroke-width="0"/>
+<line x1="371" y1="144" x2="371" y2="333" stroke="#f46d43" stroke-width="1.5"/>
+<text x="377.0" y="206" fill="#4575b4" font-family="Arial" font-size="12">0,N</text>
+<path d="M 371.0 189.0 L 377.0 201.0 L 371.0 197.0 L 365.0 201.0 Z" fill="#f46d43" stroke-width="0"/>
+<g id="association-IS CHILD OF">
+	<path d="M 410 305 a 14 14 90 0 1 14 14 V 332 h -106 V 319 a 14 14 90 0 1 14 -14" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+	<path d="M 424 332.0 v 15 a 14 14 90 0 1 -14 14 H 332 a 14 14 90 0 1 -14 -14 V 332.0 H 106" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+	<rect x="318" y="305" width="106" height="56" fill="none" rx="14" stroke="#f46d43" stroke-width="3"/>
+	<line x1="318" y1="332" x2="424" y2="332" stroke="#f46d43" stroke-width="1.5"/>
+	<text x="327" y="325.3" fill="#000000" font-family="Arial Black" font-size="13">IS CHILD OF</text>
+</g>
+
+<!-- Association RELATED TO -->
+<line x1="371" y1="504" x2="514" y2="504" stroke="#f46d43" stroke-width="1.5"/>
+<text x="431" y="521.0" fill="#4575b4" font-family="Arial" font-size="12">1,1</text>
+<path d="M 458.0 504.0 L 446.0 510.0 L 450.0 504.0 L 446.0 498.0 Z" fill="#f46d43" stroke-width="0"/>
+<line x1="514" y1="333" x2="514" y2="504" stroke="#f46d43" stroke-width="1.5"/>
+<text x="520.0" y="395" fill="#4575b4" font-family="Arial" font-size="12">0,N</text>
+<path d="M 514.0 378.0 L 520.0 390.0 L 514.0 386.0 L 508.0 390.0 Z" fill="#f46d43" stroke-width="0"/>
+<g id="association-RELATED TO">
+	<path d="M 556 476 a 14 14 90 0 1 14 14 V 503 h -112 V 490 a 14 14 90 0 1 14 -14" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+	<path d="M 570 503.0 v 15 a 14 14 90 0 1 -14 14 H 472 a 14 14 90 0 1 -14 -14 V 503.0 H 112" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+	<rect x="458" y="476" width="112" height="56" fill="none" rx="14" stroke="#f46d43" stroke-width="3"/>
+	<line x1="458" y1="503" x2="570" y2="503" stroke="#f46d43" stroke-width="1.5"/>
+	<text x="467" y="496.3" fill="#000000" font-family="Arial Black" font-size="13">RELATED TO</text>
+</g>
+
+<!-- Association BELONGS TO -->
+<line x1="65" y1="504" x2="226" y2="504" stroke="#f46d43" stroke-width="1.5"/>
+<text x="127" y="521.0" fill="#4575b4" font-family="Arial" font-size="12">1,N</text>
+<path d="M 169.0 504.0 L 157.0 510.0 L 161.0 504.0 L 157.0 498.0 Z" fill="#f46d43" stroke-width="0"/>
+<line x1="371" y1="504" x2="226" y2="504" stroke="#f46d43" stroke-width="1.5"/>
+<text x="290" y="521.0" fill="#4575b4" font-family="Arial" font-size="12">0,N</text>
+<path d="M 317.0 504.0 L 305.0 510.0 L 309.0 504.0 L 305.0 498.0 Z" fill="#f46d43" stroke-width="0"/>
+<g id="association-BELONGS TO">
+	<path d="M 269 476 a 14 14 90 0 1 14 14 V 503 h -114 V 490 a 14 14 90 0 1 14 -14" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+	<path d="M 283 503.0 v 15 a 14 14 90 0 1 -14 14 H 183 a 14 14 90 0 1 -14 -14 V 503.0 H 114" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+	<rect x="169" y="476" width="114" height="56" fill="none" rx="14" stroke="#f46d43" stroke-width="3"/>
+	<line x1="169" y1="503" x2="283" y2="503" stroke="#f46d43" stroke-width="1.5"/>
+	<text x="178" y="496.3" fill="#000000" font-family="Arial Black" font-size="13">BELONGS TO</text>
+</g>
+
+<!-- Entity Category -->
+<g id="entity-Category">
+	<g id="frame-Category">
+		<rect x="473" y="288" width="82" height="28" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="473" y="316.0" width="82" height="62" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="473" y="288" width="82" height="90" fill="none" stroke="#74add1" stroke-width="3"/>
+		<line x1="473" y1="316" x2="555" y2="316" stroke="#74add1" stroke-width="1.5"/>
+	</g>
+	<text x="481" y="308.3" fill="#000000" font-family="Arial Black" font-size="13">Category</text>
+	<text x="481" y="332.2" fill="#000000" font-family="Arial" font-size="14">name</text>
+	<line x1="481" y1="335" x2="519" y2="335" stroke="#000000" stroke-width="1.2"/>
+	<text x="481" y="350.2" fill="#000000" font-family="Arial" font-size="14">image</text>
+	<text x="481" y="368.2" fill="#000000" font-family="Arial" font-size="14">enable</text>
+</g>
+
+<!-- Entity Product -->
+<g id="entity-Product">
+	<g id="frame-Product">
+		<rect x="9" y="387" width="112" height="28" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="9" y="415.0" width="112" height="206" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="9" y="387" width="112" height="234" fill="none" stroke="#74add1" stroke-width="3"/>
+		<line x1="9" y1="415" x2="121" y2="415" stroke="#74add1" stroke-width="1.5"/>
+	</g>
+	<text x="36" y="407.3" fill="#000000" font-family="Arial Black" font-size="13">Product</text>
+	<text x="17" y="431.2" fill="#000000" font-family="Arial" font-size="14">name</text>
+	<line x1="17" y1="434" x2="55" y2="434" stroke="#000000" stroke-width="1.2"/>
+	<text x="17" y="449.2" fill="#000000" font-family="Arial" font-size="14">price</text>
+	<text x="17" y="467.2" fill="#000000" font-family="Arial" font-size="14">weight</text>
+	<text x="17" y="485.2" fill="#000000" font-family="Arial" font-size="14">quantity</text>
+	<text x="17" y="503.2" fill="#000000" font-family="Arial" font-size="14">image</text>
+	<text x="17" y="521.2" fill="#000000" font-family="Arial" font-size="14">description</text>
+	<text x="17" y="539.2" fill="#000000" font-family="Arial" font-size="14">composition</text>
+	<text x="17" y="557.2" fill="#000000" font-family="Arial" font-size="14">additional_info</text>
+	<text x="17" y="575.2" fill="#000000" font-family="Arial" font-size="14">allergens</text>
+	<text x="17" y="593.2" fill="#000000" font-family="Arial" font-size="14">rate</text>
+	<text x="17" y="611.2" fill="#000000" font-family="Arial" font-size="14">enable</text>
+</g>
+
+<!-- Entity SubCategory -->
+<g id="entity-SubCategory">
+	<g id="frame-SubCategory">
+		<rect x="317" y="459" width="108" height="28" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="317" y="487.0" width="108" height="62" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="317" y="459" width="108" height="90" fill="none" stroke="#74add1" stroke-width="3"/>
+		<line x1="317" y1="487" x2="425" y2="487" stroke="#74add1" stroke-width="1.5"/>
+	</g>
+	<text x="325" y="479.3" fill="#000000" font-family="Arial Black" font-size="13">SubCategory</text>
+	<text x="325" y="503.2" fill="#000000" font-family="Arial" font-size="14">name</text>
+	<line x1="325" y1="506" x2="363" y2="506" stroke="#000000" stroke-width="1.2"/>
+	<text x="325" y="521.2" fill="#000000" font-family="Arial" font-size="14">image</text>
+	<text x="325" y="539.2" fill="#000000" font-family="Arial" font-size="14">enable</text>
+</g>
+
+<!-- Entity Producer -->
+<g id="entity-Producer">
+	<g id="frame-Producer">
+		<rect x="13" y="9" width="104" height="28" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="13" y="37.0" width="104" height="242" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="13" y="9" width="104" height="270" fill="none" stroke="#74add1" stroke-width="3"/>
+		<line x1="13" y1="37" x2="117" y2="37" stroke="#74add1" stroke-width="1.5"/>
+	</g>
+	<text x="32" y="29.3" fill="#000000" font-family="Arial Black" font-size="13">Producer</text>
+	<text x="21" y="53.2" fill="#000000" font-family="Arial" font-size="14">siret_number</text>
+	<line x1="21" y1="56" x2="108" y2="56" stroke="#000000" stroke-width="1.2"/>
+	<text x="21" y="71.2" fill="#000000" font-family="Arial" font-size="14">social reason</text>
+	<text x="21" y="89.2" fill="#000000" font-family="Arial" font-size="14">address</text>
+	<text x="21" y="107.2" fill="#000000" font-family="Arial" font-size="14">postal_code</text>
+	<text x="21" y="125.2" fill="#000000" font-family="Arial" font-size="14">city</text>
+	<text x="21" y="143.2" fill="#000000" font-family="Arial" font-size="14">email</text>
+	<text x="21" y="161.2" fill="#000000" font-family="Arial" font-size="14">lastname</text>
+	<text x="21" y="179.2" fill="#000000" font-family="Arial" font-size="14">firstname</text>
+	<text x="21" y="197.2" fill="#000000" font-family="Arial" font-size="14">telephone</text>
+	<text x="21" y="215.2" fill="#000000" font-family="Arial" font-size="14">status</text>
+	<text x="21" y="233.2" fill="#000000" font-family="Arial" font-size="14">enable</text>
+	<text x="21" y="251.2" fill="#000000" font-family="Arial" font-size="14">avatar</text>
+	<text x="21" y="269.2" fill="#000000" font-family="Arial" font-size="14">description</text>
+</g>
+
+<!-- Entity Univers -->
+<g id="entity-Univers">
+	<g id="frame-Univers">
+		<rect x="335" y="99" width="72" height="28" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="335" y="127.0" width="72" height="62" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="335" y="99" width="72" height="90" fill="none" stroke="#74add1" stroke-width="3"/>
+		<line x1="335" y1="127" x2="407" y2="127" stroke="#74add1" stroke-width="1.5"/>
+	</g>
+	<text x="343" y="119.3" fill="#000000" font-family="Arial Black" font-size="13">Univers</text>
+	<text x="343" y="143.2" fill="#000000" font-family="Arial" font-size="14">name</text>
+	<line x1="343" y1="146" x2="381" y2="146" stroke="#000000" stroke-width="1.2"/>
+	<text x="343" y="161.2" fill="#000000" font-family="Arial" font-size="14">image</text>
+	<text x="343" y="179.2" fill="#000000" font-family="Arial" font-size="14">enable</text>
+</g>
+
+<!-- Entity User -->
+<g id="entity-User">
+	<g id="frame-User">
+		<rect x="178" y="225" width="96" height="28" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+		<rect x="178" y="253.0" width="96" height="188" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+		<rect x="178" y="225" width="96" height="216" fill="none" stroke="#74add1" stroke-width="3"/>
+		<line x1="178" y1="253" x2="274" y2="253" stroke="#74add1" stroke-width="1.5"/>
+	</g>
+	<text x="209" y="245.3" fill="#000000" font-family="Arial Black" font-size="13">User</text>
+	<text x="186" y="269.2" fill="#000000" font-family="Arial" font-size="14">email</text>
+	<line x1="186" y1="272" x2="222" y2="272" stroke="#000000" stroke-width="1.2"/>
+	<text x="186" y="287.2" fill="#000000" font-family="Arial" font-size="14">roles</text>
+	<text x="186" y="305.2" fill="#000000" font-family="Arial" font-size="14">password</text>
+	<text x="186" y="323.2" fill="#000000" font-family="Arial" font-size="14">firstname</text>
+	<text x="186" y="341.2" fill="#000000" font-family="Arial" font-size="14">lastname</text>
+	<text x="186" y="359.2" fill="#000000" font-family="Arial" font-size="14">telephone</text>
+	<text x="186" y="377.2" fill="#000000" font-family="Arial" font-size="14">address</text>
+	<text x="186" y="395.2" fill="#000000" font-family="Arial" font-size="14">postal_code</text>
+	<text x="186" y="413.2" fill="#000000" font-family="Arial" font-size="14">city</text>
+	<text x="186" y="431.2" fill="#000000" font-family="Arial" font-size="14">enable</text>
+</g>
+</svg>

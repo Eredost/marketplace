@@ -5,6 +5,7 @@ namespace App\Controller\Frontend;
 
 use App\Entity\Producer;
 use App\Form\ProducerType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +20,7 @@ class ProducerController extends AbstractController
      * @Route("/producer/profil",
      *     name="producer_profil",
      *     methods={"GET"})
+     * @IsGranted("ROLE_PRODUCER")
      *
      * @return Response
      *
@@ -27,11 +29,6 @@ class ProducerController extends AbstractController
     public function index()
     {
         $producer = $this->getUser()->getProducer();
-
-        if (!$producer) {
-
-            throw new UnauthorizedHttpException('', 'Vous devez d\'abord vous inscrire en tant que producteur pour accéder à cette page !');
-        }
 
         return $this->render('frontend/producer/profil.html.twig', [
             'producer' => $producer,
@@ -42,6 +39,7 @@ class ProducerController extends AbstractController
      * @Route("/producer/registration",
      *     name="producer_registration",
      *     methods={"GET","POST"})
+     * @IsGranted("NOT_PRODUCER")
      *
      * @param Request $request
      *
@@ -84,13 +82,8 @@ class ProducerController extends AbstractController
      *
      * @throws NotFoundHttpException when the desired producer is not existing
      */
-    public function show(Producer $producer = null)
+    public function show(Producer $producer)
     {
-        if (!$producer) {
-
-            throw $this->createNotFoundException('La page que vous recherchez n\'existe pas');
-        }
-
         return $this->render('frontend/producer/show.html.twig', [
             'producer' => $producer,
         ]);
@@ -100,6 +93,7 @@ class ProducerController extends AbstractController
      * @Route("/producer/edit",
      *     name="producer_edit",
      *     methods={"GET","POST"})
+     * @IsGranted("ROLE_PRODUCER")
      *
      * @param Request $request
      *
@@ -109,10 +103,7 @@ class ProducerController extends AbstractController
      */
     public function edit(Request $request)
     {
-        if (!$producer = $this->getUser()->getProducer()) {
-
-            throw new UnauthorizedHttpException('', 'Vous devez d\'abord vous inscrire en tant que producteur pour accéder à cette page !');
-        }
+        $producer = $this->getUser()->getProducer();
         $producerForm = $this->createForm(ProducerType::class, $producer);
         $producerForm->handleRequest($request);
 

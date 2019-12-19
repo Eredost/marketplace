@@ -2,6 +2,7 @@
 
 namespace App\Controller\Frontend;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,20 +17,14 @@ class UserController extends AbstractController
      * @Route("/profil",
      *     name="profil_user",
      *     methods={"GET"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      *
      * @return Response
-     *
-     * @throws UnauthorizedHttpException when the user is not logged in
      */
     public function profile()
     {
-        if (!$user = $this->getUser()) {
-
-            throw new UnauthorizedHttpException('', 'Vous devez d\'abord vous connectez pour accéder à cette page');
-        }
-
         return $this->render('frontend/user/profil.html.twig', [
-            'user' => $user
+            'user' => $this->getUser(),
         ]);
     }
 
@@ -37,20 +32,15 @@ class UserController extends AbstractController
      * @Route("/profil/update",
      *     name="profil_update",
      *     methods={"GET", "POST"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      *
      * @param Request $request
      *
      * @return RedirectResponse|Response
-     *
-     * @throws UnauthorizedHttpException when the user is not logged in
      */
     public function profileUpdate(Request $request)
     {
-        if (!$user = $this->getUser()) {
-
-            throw new UnauthorizedHttpException('', 'Vous devez d\'abord vous connectez pour accéder à cette page');
-        }
-        $updateForm = $this->createForm(UserUpdateProfilType::class, $user);
+        $updateForm = $this->createForm(UserUpdateProfilType::class, $this->getUser());
         $updateForm->handleRequest($request);
 
         if ($updateForm->isSubmitted() && $updateForm->isValid()) {
@@ -66,7 +56,7 @@ class UserController extends AbstractController
         }
 
         return $this->render('frontend/user/profil_update.html.twig', [
-            'update_form' => $updateForm->createView()
+            'update_form' => $updateForm->createView(),
         ]);
     }
 }

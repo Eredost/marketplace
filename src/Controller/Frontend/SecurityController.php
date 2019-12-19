@@ -42,7 +42,7 @@ class SecurityController extends AbstractController
         }
 
         return $this->render('frontend/security/registration.html.twig', [
-            'registration_form' => $registrationForm->createView()
+            'registration_form' => $registrationForm->createView(),
         ]);
     }
 

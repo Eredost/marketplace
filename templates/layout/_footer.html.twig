@@ -94,7 +94,7 @@
                 <hr class="footer__divider mb-4 mt-0 d-inline-block mx-auto">
 
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% if is_granted('ROLE_PRODUCER') %}
+                    {% if not is_granted('ROLE_PRODUCER') %}
 
                         <p>
                             <a href="{{ path('producer_registration') }}">Vendre sur Cocorico</a>

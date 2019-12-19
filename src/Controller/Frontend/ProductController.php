@@ -2,6 +2,7 @@
 namespace App\Controller\Frontend;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -27,12 +28,8 @@ class ProductController extends AbstractController
      *
      * @throws NotFoundHttpException when the desired product is not existing
      */
-   public function show(ProductRepository $productRepository, Product $product = null)
+   public function show(ProductRepository $productRepository, Product $product)
    {
-       if (!$product) {
-
-           throw $this->createNotFoundException('La page que vous recherchez n\'existe pas !');
-       }
        $products = $productRepository->getProductsWithoutTheOneDisplayed($product->getId());
 
        return $this->render('frontend/product/show.html.twig', [
@@ -45,6 +42,7 @@ class ProductController extends AbstractController
      * @Route("/product/new",
      *     name="product_new",
      *     methods={"GET","POST"})
+     * @IsGranted("ROLE_PRODUCER")
      *
      * @param Request $request
      *
@@ -54,10 +52,7 @@ class ProductController extends AbstractController
      */
    public function new(Request $request)
    {
-       if (!$producer = $this->getUser()->getProducer()) {
-
-           throw $this->createAccessDeniedException('Vous devez être producteur pour accéder à cette page !');
-       }
+       $producer = $this->getUser()->getProducer();
        $product = new Product();
        $productForm = $this->createForm(ProductType::class, $product);
        $productForm->handleRequest($request);
@@ -88,6 +83,7 @@ class ProductController extends AbstractController
      * @Route("/product/{id<\d+>}/edit",
      *     name="product_edit",
      *     methods={"GET","POST"})
+     * @IsGranted("PRODUCER_EDIT", subject="product")
      *
      * @param Request      $request
      * @param Product|null $product
@@ -96,12 +92,8 @@ class ProductController extends AbstractController
      *
      * @throws NotFoundHttpException when the desired product does not exist
      */
-    public function edit(Request $request, Product $product = null)
+    public function edit(Request $request, Product $product)
     {
-        if (!$product) {
-
-            throw $this->createNotFoundException('La page que vous recherchez n\'existe pas !');
-        }
         $productForm = $this->createForm(ProductType::class, $product);
         $productForm->handleRequest($request);
 
@@ -129,24 +121,15 @@ class ProductController extends AbstractController
      * @Route("product/disable/{id<\d+>}",
      *     name = "disable_product",
      *     methods={"GET", "POST"})
+     * @IsGranted("PRODUCER_EDIT", subject="product")
      *
      * @param EntityManagerInterface $manager
      * @param Product|null $product
      *
      * @return RedirectResponse
-     *
      */
-    public function toggleProduct(EntityManagerInterface $manager, Product $product = null)
+    public function toggleProduct(EntityManagerInterface $manager, Product $product)
     {
-        if (!$product) {
-
-            throw $this->createNotFoundException('La page que vous recherchez n\'existe pas');
-        }
-        if ($product->getProducer() != $this->getUser()->getProducer()) {
-
-            throw $this->createAccessDeniedException();
-        }
-
         $toggle = !$product->getEnable();
         $product->setEnable($toggle);
         $manager->flush();
@@ -165,6 +148,7 @@ class ProductController extends AbstractController
      * @Route("/product/{id<\d+>}",
      *     name="product_delete",
      *     methods={"DELETE"})
+     * @IsGranted("PRODUCER_EDIT", subject="product")
      *
      * @param Request      $request
      * @param Product|null $product
@@ -173,13 +157,8 @@ class ProductController extends AbstractController
      *
      * @throws NotFoundHttpException when the desired product does not exist
      */
-    public function delete(Request $request, Product $product = null)
+    public function delete(Request $request, Product $product)
     {
-        if (!$product) {
-
-            throw $this->createNotFoundException('La page que vous recherchez n\'existe pas');
-        }
-
         if ($this->isCsrfTokenValid('delete', $request->request->get('_token'))) {
             $manager = $this->getDoctrine()->getManager();
             $manager->remove($product);

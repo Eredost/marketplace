@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Form\Model\UserRegistrationFormModel;
 use Doctrine\Common\Annotations\Annotation\Required;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -33,45 +35,28 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password', RepeatedType ::class, [
+            ->add('plainPassword', RepeatedType ::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe doivent être identique !',
-                'mapped'          => false,
                 'options'         => [
                     'attr' => [
                         'class' => 'password-field'
                     ]
                 ],
-                'required'       => true,
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répéter votre mot de passe']
             ])
-            ->addEventListener(
-                FormEvents::SUBMIT,
-                [$this, 'onSubmit']
-            )
+            ->add('agreedTerms', CheckboxType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => UserRegistrationFormModel::class,
             'attr' => [
                 'novalidate' => 'novalidate'
             ],
         ]);
-    }
-
-    public function onSubmit(FormEvent $event)
-    {
-        /** @var User $user */
-        $user = $event->getData();
-
-        $form = $event->getForm();
-        $password = $form->get('password')->getNormData();
-
-        $encodedPassword = $this->encoder->encodePassword($user, $password);
-        $user->setPassword($encodedPassword);
     }
 }

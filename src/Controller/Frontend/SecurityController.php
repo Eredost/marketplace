@@ -2,10 +2,13 @@
 
 namespace App\Controller\Frontend;
 
+use App\Security\UserAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
@@ -22,13 +25,17 @@ class SecurityController extends AbstractController
      *
      * @return RedirectResponse|Response
      */
-    public function registration(Request $request)
+    public function registration(Request $request, UserPasswordEncoderInterface $encoder, GuardAuthenticatorHandler $handler, UserAuthenticator $authenticator)
     {
-        $user = new User();
-        $registrationForm = $this->createForm(RegistrationType::class, $user);
+        $registrationForm = $this->createForm(RegistrationType::class);
         $registrationForm->handleRequest($request);
 
         if ($registrationForm->isSubmitted() && $registrationForm->isValid()) {
+            $userModel = $registrationForm->getData();
+            $user = new User();
+            $user->setEmail($userModel->email)
+                ->setPassword($encoder->encodePassword($user, $userModel->plainPassword));
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($user);
             $manager->flush();
@@ -38,7 +45,12 @@ class SecurityController extends AbstractController
                 'Votre inscription est effectuée !'
             );
 
-            return $this->redirectToRoute('app_login');
+            return $handler->authenticateUserAndHandleSuccess(
+                $user,
+                $request,
+                $authenticator,
+                'main'
+            );
         }
 
         return $this->render('frontend/security/registration.html.twig', [

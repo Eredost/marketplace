@@ -12,7 +12,11 @@
     
         {{ form_row(registration_form.email) }}
 
-        {{ form_row(registration_form.password) }}
+        {{ form_row(registration_form.plainPassword) }}
+
+        {{ form_row(registration_form.agreedTerms, {
+            label: 'J\'ai lu et j\'accepte les conditions générales d\'utilisation'
+        }) }}
 
         <button type="submit" class="btn btn-lg btn-secondary">Inscription</button>
 

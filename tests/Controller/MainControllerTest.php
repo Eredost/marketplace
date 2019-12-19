@@ -59,7 +59,7 @@ class MainControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/profil');
 
-        $this->assertEquals(401, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect());
     }
 
     /**

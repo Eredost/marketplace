@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block meta %}
+    <meta name="description"
+          content="Cocorico World est une plateforme de mise en relation entre producteurs et consommateurs pour l'achat et la vente de produits 100% français">
+
+    <meta property="og:site_name" content="Cocorico World">
     <meta property="og:title" content="Accueil - Cocorico World">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ app.request.uri }}">
-    <meta property="og:image" content="{{ asset('asset/image/cocorico-world.jpg') }}">
+    <meta property="og:image" content="{{ absolute_url(asset('asset/image/cocorico-world.jpg')) }}">
     <meta property="description"
           content="Cocorico World est une plateforme de mise en relation entre producteurs et consommateurs pour l'achat et la vente de produits 100% français">
 
     <meta property="twitter:card" content="summary">
+    <meta name="twitter:image:src" content="{{ absolute_url(asset('asset/image/cocorico-world.jpg')) }}">
+    <meta name="twitter:title" content="Accueil - Cocorico World">
+    <meta name="twitter:description"
+          content="Cocorico World est une plateforme de mise en relation entre producteurs et consommateurs pour l'achat et la vente de produits 100% francais">
 {% endblock %}
 
 {% block stylesheets %}

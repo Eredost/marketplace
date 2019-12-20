@@ -1,5 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block meta %}
+    <meta property="og:title" content="Accueil - Cocorico World">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.uri }}">
+    <meta property="og:image" content="{{ asset('asset/image/cocorico-world.jpg') }}">
+    <meta property="description"
+          content="Cocorico World est une plateforme de mise en relation entre producteurs et consommateurs pour l'achat et la vente de produits 100% français">
+
+    <meta property="twitter:card" content="summary">
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('asset/css/owl.carousel.css') }}">

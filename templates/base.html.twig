@@ -14,13 +14,17 @@
         <meta name="theme-color" content="#ffffff">
         <!-- Favicon -->
 
+        <!-- Open Graph - Twitter cards -->
+        {% block meta %}{% endblock %}
+        <!-- Open Graph - Twitter cards -->
+
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
             <link rel="stylesheet" href="{{ asset('asset/css/font-awesome.min.css') }}">
         {% endblock %}
 
-        <title>{% block title %}{% endblock %} - Cocorico </title>
+        <title>{% block title %}{% endblock %} - Cocorico World </title>
     </head>
     <body class="body">
         

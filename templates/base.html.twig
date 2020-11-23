@@ -24,6 +24,18 @@
             <link rel="stylesheet" href="{{ asset('asset/css/font-awesome.min.css') }}">
         {% endblock %}
 
+        {% block analytics %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-000000000-0"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-000000000-0');
+        </script>
+        {% endblock %}
+
         <title>{% block title %}{% endblock %} - Cocorico World </title>
     </head>
     <body class="body">

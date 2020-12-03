@@ -77,7 +77,7 @@ abstract class BaseFixture extends Fixture
      *
      * @author Michaël Coutin <michael.coutin62@gmail.com>
      *
-     * @param string $groupName
+     * @param string $groupName The name that will be used to reference the entity
      *
      * @return object[]
      *

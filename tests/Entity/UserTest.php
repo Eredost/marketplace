@@ -15,7 +15,7 @@ class UserTest extends KernelTestCase
     {
         return (new User())
             ->setEmail('usertest@email.com')
-            ->setPassword('EXPJbx84j9XgRP7yqoCSCJTxnqqrdcm5kMCPXd4f')
+            ->setPassword('$2y$10$rpJS6a4YsQCo7juJVO7wRejtkot7BXJzSr33XhxEwp28DbFiBqtXu')
             ->setFirstname('John')
             ->setLastname('Doe')
             ->setTelephone('0600000000')
@@ -101,12 +101,9 @@ class UserTest extends KernelTestCase
         $this->assertHasErrors($entity);
     }
 
-    public function testInvalidFormatTelephone()
+    public function testInvalidValueTelephone()
     {
-        $entity = $this->getEntity()
-            ->setTelephone('06203040')
-        ;
-        $this->assertHasErrors($entity, 1);
+        $this->assertHasErrors($this->getEntity()->setTelephone('06203040'), 1);
     }
 
     public function testValidFormatTelephone()
@@ -162,4 +159,3 @@ class UserTest extends KernelTestCase
         $this->assertHasErrors($entity->setCity(str_repeat('a', 51)), 1);
     }
 }
-

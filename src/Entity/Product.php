@@ -65,21 +65,41 @@ class Product
     private $image;
 
     /**
+     * @Assert\Length(
+     *     max = 800,
+     *     maxMessage = "La description ne peut pas dépasser {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
+     * @Assert\Length(
+     *     max = 400,
+     *     maxMessage = "La composition ne peut pas dépasser {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $composition;
 
     /**
+     * @Assert\Length(
+     *     max = 400,
+     *     maxMessage = "La description additionnelle ne peut pas dépasser {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $additionalInfo;
 
     /**
+     * @Assert\Length(
+     *     max = 400,
+     *     maxMessage = "La liste des allergènes ne peut pas dépasser {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $allergens;

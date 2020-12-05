@@ -29,7 +29,8 @@ class User implements UserInterface
      *      min = 6,
      *      max = 180,
      *      minMessage = "Votre email doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre email doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre email doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * )
      * 
      * @ORM\Column(type="string", length=180, unique=true)
@@ -56,7 +57,8 @@ class User implements UserInterface
      *      min = 2,
      *      max = 20,
      *      minMessage = "Votre prénom doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre prénom doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre prénom doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = true
      * ) 
      * 
      * @ORM\Column(type="string", length=20, nullable=true)
@@ -68,7 +70,8 @@ class User implements UserInterface
      *      min = 2,
      *      max = 20,
      *      minMessage = "Votre nom de famille doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre nom de famille doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre nom de famille doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = true
      * )
      * 
      * @ORM\Column(type="string", length=20, nullable=true)
@@ -76,12 +79,7 @@ class User implements UserInterface
     private $lastname;
 
     /**
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Votre numéro de téléphone doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre numéro de téléphone doit comporter {{ limit }} caractères maximum"
-     * )
+     * @Assert\Regex("/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/")
      * 
      * @ORM\Column(type="string", length=50, nullable=true)
      */
@@ -92,7 +90,8 @@ class User implements UserInterface
      *      min = 2,
      *      max = 64,
      *      minMessage = "Votre adresse doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre adresse doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre adresse doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = true
      * )  
      * 
      * @ORM\Column(type="string", length=64, nullable=true)
@@ -103,10 +102,11 @@ class User implements UserInterface
      * @ORM\Column(type="integer", nullable=true)
      * @Assert\Positive
      * @Assert\Length(
-     * min = 5,
-     * max = 5,
-     * minMessage = "Votre code postal doit comporter {{ limit }} caractères minimum",
-     * maxMessage = "Votre code postal doit comporter {{ limit }} caractères maximum",
+     *      min = 5,
+     *      max = 5,
+     *      minMessage = "Votre code postal doit comporter {{ limit }} caractères minimum",
+     *      maxMessage = "Votre code postal doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = true
      * )
      */
     private $postalCode;
@@ -116,7 +116,8 @@ class User implements UserInterface
      *      min = 2,
      *      max = 50,
      *      minMessage = "Votre ville doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre ville doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre ville doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = true
      * ) 
      * 
      * @ORM\Column(type="string", length=50, nullable=true)

@@ -19,7 +19,7 @@ matrix:
   include:
     # Test the latest stable release
     - php: 7.3
-      env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
+      env: COVERAGE=false PHPUNIT_FLAGS="-v --coverage-text"
 
 before_install:
   - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi

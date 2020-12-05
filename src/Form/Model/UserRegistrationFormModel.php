@@ -36,6 +36,7 @@ class UserRegistrationFormModel
      *      minMessage = "Votre mot de passe doit comporter {{ limit }} caractères au minimum",
      *      maxMessage = "Votre mot de passe doit comporter {{ limit }} caractères au maximum"
      * )
+     * @Assert\NotCompromisedPassword()
      */
     public $plainPassword;
 

@@ -25,7 +25,8 @@ class Producer
      *      min = 2,
      *      max = 64,
      *      minMessage = "Votre nom de raison sociale doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre nom de raison sociale doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre nom de raison sociale doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * ) 
      * 
      * @ORM\Column(type="string", length=64)
@@ -38,7 +39,8 @@ class Producer
      *      min = 2,
      *      max = 100,
      *      minMessage = "Votre numéro de siret doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre numéro de siret doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre numéro de siret doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * )
      * 
      * @ORM\Column(type="string")
@@ -51,7 +53,8 @@ class Producer
      *      min = 2,
      *      max = 64,
      *      minMessage = "Votre adresse doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre adresse doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre adresse doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * )
      * 
      * @ORM\Column(type="string", length=64)
@@ -59,26 +62,26 @@ class Producer
     private $address;
 
     /**
-     * @ORM\Column(type="integer")
      * 
      * @Assert\NotBlank
-     * @Assert\Positive
      * @Assert\Length(
-     * min = 5,
-     * max = 5,
-     * minMessage = "Votre code postal doit comporter {{ limit }} caractères minimum",
-     * maxMessage = "Votre code postal doit comporter {{ limit }} caractères maximum",
+     *      min = 5,
+     *      max = 5,
+     *      minMessage = "Votre code postal doit comporter {{ limit }} caractères minimum",
+     *      maxMessage = "Votre code postal doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * )
+     *
+     * @ORM\Column(type="string", length=5)
      */
     private $postalCode;
 
     /**
      * @Assert\NotBlank
      * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Votre nom de ville doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre nom de ville doit comporter {{ limit }} caractères maximum"
+     *      max = 90,
+     *      maxMessage = "Votre nom de ville doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * )
      * 
      * @ORM\Column(type="string", length=50)
@@ -94,7 +97,8 @@ class Producer
      *      min = 6,
      *      max = 180,
      *      minMessage = "Votre email doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre email doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre email doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * )
      * 
      * @ORM\Column(type="string", length=180)
@@ -107,7 +111,8 @@ class Producer
      *      min = 2,
      *      max = 20,
      *      minMessage = "Votre prénom doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre prénom doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre prénom doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * ) 
      * 
      * @ORM\Column(type="string", length=20)
@@ -115,12 +120,13 @@ class Producer
     private $firstname;
 
     /**
-     * @Assert\NotBlank 
+     * @Assert\NotBlank
      * @Assert\Length(
      *      min = 2,
      *      max = 20,
      *      minMessage = "Votre nom de famille doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre nom de famille doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre nom de famille doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * )
      * 
      * @ORM\Column(type="string", length=20)
@@ -129,11 +135,13 @@ class Producer
 
     /**
      * @Assert\NotBlank
+     * @Assert\Regex("/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/")
      * @Assert\Length(
      *      min = 2,
      *      max = 21,
      *      minMessage = "Votre numéro de téléphone doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre numéro de téléphone doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre numéro de téléphone doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * ) 
      * 
      * @ORM\Column(type="string", length=21)
@@ -145,7 +153,8 @@ class Producer
      *      min = 2,
      *      max = 64,
      *      minMessage = "Votre statut doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre statut doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre statut doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = true
      * ) 
      * 
      * @ORM\Column(type="string", length=64, nullable=true)
@@ -247,12 +256,12 @@ class Producer
         return $this;
     }
 
-    public function getPostalCode(): ?int
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    public function setPostalCode(int $postalCode): self
+    public function setPostalCode(string $postalCode): self
     {
         $this->postalCode = $postalCode;
 

@@ -27,7 +27,7 @@
 |social_reason|VARCHAR(64)|NOT NULL|The name of the company|
 |siret_number|VARCHAR(255)|NOT NULL|The number proving the authenticity of the producer's activity|
 |address|VARCHAR(64)|NOT NULL|The address of the producer|
-|postal_code|INT(11)|NOT NULL, UNSIGNED|The postal code according to the city|
+|postal_code|VARCHAR(5)|NOT NULL|The postal code according to the city|
 |city|VARCHAR(50)|NOT NULL|The city of the producer|
 |email|VARCHAR(180)|NOT NULL|Email address of the producer|
 |firstname|VARCHAR(20)|NOT NULL|The firstname of the producer|
@@ -47,7 +47,7 @@
 |id|INT(11)|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|The identifier of the product|
 |producer_id|INT(11)|FOREIGN KEY, NOT NULL, UNSIGNED|Producer id attached to the product|
 |name|VARCHAR(64)|NOT NULL|The name of the product|
-|price|INT(11)|NOT NULL, UNSIGNED|The price for a single unit of the product|
+|price|DECIMAL(8,3)|NOT NULL, UNSIGNED|The price for a single unit of the product|
 |weight|INT(11)|NOT NULL, UNSIGNED|The weight for a single unit of the product|
 |quantity|INT(11)|NOT NULL, UNSIGNED|The total quantity of products on sale|
 |image|VARCHAR(255)|NULL|The image of the product|

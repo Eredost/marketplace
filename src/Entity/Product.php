@@ -26,7 +26,8 @@ class Product
      *      min = 2,
      *      max = 64,
      *      minMessage = "Votre nom de produit doit comporter {{ limit }} caractères minimum",
-     *      maxMessage = "Votre nom de produit doit comporter {{ limit }} caractères maximum"
+     *      maxMessage = "Votre nom de produit doit comporter {{ limit }} caractères maximum",
+     *      allowEmptyString = false
      * ) 
      * 
      * @ORM\Column(type="string", length=64)
@@ -34,10 +35,11 @@ class Product
     private $name;
 
     /**
-     * @Assert\NotBlank 
+     * @Assert\NotBlank
      * @Assert\Positive
-     * 
-     * @ORM\Column(type="integer")
+     * @Assert\LessThan(1000000)
+     *
+     * @ORM\Column(type="decimal", precision=8, scale=2)
      */
     private $price;
 
@@ -63,21 +65,41 @@ class Product
     private $image;
 
     /**
+     * @Assert\Length(
+     *     max = 800,
+     *     maxMessage = "La description ne peut pas dépasser {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
+     * @Assert\Length(
+     *     max = 400,
+     *     maxMessage = "La composition ne peut pas dépasser {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $composition;
 
     /**
+     * @Assert\Length(
+     *     max = 400,
+     *     maxMessage = "La description additionnelle ne peut pas dépasser {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $additionalInfo;
 
     /**
+     * @Assert\Length(
+     *     max = 400,
+     *     maxMessage = "La liste des allergènes ne peut pas dépasser {{ limit }} caractères"
+     * )
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $allergens;
@@ -147,12 +169,12 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?string
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(string $price): self
     {
         $this->price = $price;
 
